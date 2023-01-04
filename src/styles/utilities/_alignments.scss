@@ -1,0 +1,15 @@
+$contentAlignments: 'space-between', 'evenly';
+
+@each $contentAlignment in $contentAlignments {
+	.#{$contentAlignment} {
+		justify-content: #{$contentAlignment};
+	}
+}
+
+$textAlignments: 'right', 'center';
+
+@each $textAlignment in $textAlignments {
+	.txt-#{$textAlignment} {
+		text-align: #{$textAlignment};
+	}
+}

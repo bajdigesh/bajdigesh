@@ -1,0 +1,23 @@
+@use '../abstracts' as *;
+
+.btn {
+	display: inline-grid;
+	padding: var(--spacer-3) var(--spacer-4);
+	border-radius: var(--radii, var(--spacer-1));
+	border: 1px solid currentColor;
+
+	&:has(.fa, .icon) {
+		display: inline-flex;
+	}
+
+	&:where(.is-cta) {
+		--radii: var(--spacer-10);
+		padding: var(--spacer-3) var(--spacer-3);
+		width: min(100%, 11.5rem);
+		text-align: center;
+	}
+
+	&.is-ghost {
+		@include buttons(var(--bodyTextClr, var(--clr-light900)), var(--clr-accent500));
+	}
+}

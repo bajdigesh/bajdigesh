@@ -1,0 +1,7 @@
+@use 'sass:math';
+
+@for $h from 1 through 6 {
+	h#{$h} {
+		font-size: clamp(math.div(16, $h) * 0.375rem, math.div(5, $h) * 2vw + 0.5rem, math.div(16, $h) * 1.1rem);
+	}
+}

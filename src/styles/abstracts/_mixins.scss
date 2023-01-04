@@ -1,0 +1,14 @@
+@use './functions';
+
+@mixin buttons($bgColor, $hoverBgColor) {
+	color: var(--bodyTextClr);
+	transition: all 0.25s ease;
+
+	&:where(.is-ghost) {
+		&:hover {
+			background: #{$hoverBgColor};
+			border-color: $hoverBgColor;
+			color: text-color(#5a4b72);
+		}
+	}
+}

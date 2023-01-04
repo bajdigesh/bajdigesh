@@ -1,0 +1,11 @@
+label {
+	cursor: pointer;
+}
+
+input {
+	accent-color: var(--clr-accent500);
+	
+	&[type='radio'] {
+		cursor: pointer;
+	}
+}

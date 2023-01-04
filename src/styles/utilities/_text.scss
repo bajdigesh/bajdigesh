@@ -1,0 +1,14 @@
+$textStyles: "capitalize", "uppercase", "lowercase", "small-caps";
+
+@each $textStyle in $textStyles {
+	@if($textStyle == 'small-caps') {
+		.txt-small-caps {
+			font-variant: small-caps;
+		}
+		} @else {
+			.txt-#{$textStyle} {
+				text-transform: #{$textStyle};
+			}
+		}
+
+	}

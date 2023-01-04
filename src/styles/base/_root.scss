@@ -1,0 +1,73 @@
+@use "../abstracts" as *;
+@use "sass:math";
+
+:root {
+  // Color Variables
+  @each $colorTheme, $colorMap in $colors {
+    @each $colorWeight, $colorValue in $colorMap {
+      --clr-#{$colorTheme}#{$colorWeight}: #{$colorValue};
+    }
+  }
+
+  // Spacer Variables
+  @for $i from 1 through $totalCols {
+    $spc: math.div($i, 16) * 4;
+    --spacer-#{$i}: #{$spc}rem;
+  }
+
+  // Font Variables
+  --line-height: #{$lineHeight};
+  --main-font: #{$mainFont};
+
+  // Other Variables
+  --opacity: 0.3;
+  --objOpacity: var(--opacity);
+
+  @each $weight in $weights {
+    --fw-#{$weight}: #{$weight};
+  }
+
+  // Themable Variables
+  --bodyBg: var(--clr-light900);
+  --bodyTextClr: var(--clr-dark900);
+
+  // If the user has chosen dark option
+  &:has(.theme [value="dark"]:checked) {
+    @extend %darkTheme;
+  }
+
+  // If the user has chosen light option
+  &:has(.theme [value="light"]:checked) {
+    @extend %lightTheme;
+  }
+}
+
+%darkTheme {
+  --bodyBg: var(--clr-dark500);
+  --bodyTextClr: var(--clr-light900);
+  --objOpacity: 0.5;
+  --blendMode: multiply;
+  --logoBrightness: 1000%;
+
+  @supports (-moz-appearance: none) {
+    --objOpacity: 0.25;
+  }
+}
+
+%lightTheme {
+  --bodyBg: var(--clr-light900);
+  --bodyTextClr: var(--clr-dark900);
+  --blendMode: overlay;
+  --objOpacity: 0.3;
+}
+
+// If the system setting of user is dark by default
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bodyBg: var(--clr-dark500);
+    --bodyTextClr: var(--clr-light900);
+    --objOpacity: 0.5;
+    --blendMode: multiply;
+    --logoBrightness: 1000%;
+  }
+}
